@@ -35,9 +35,10 @@ namespace lesson4
             //Задание 4
             Console.Write("Введите значение для вычисления числа Фиббоначчи: ");
             int numb = Convert.ToInt32(Console.ReadLine());
-            string num_value = (numb > 0) ? "Число Фиббоначчи для заданного значения = "+ Convert.ToString(ToGetFibbonachiNumValue(numb)) : "Ошибка: значение не может быть нулевым или отрицательным!";
-            Console.WriteLine(num_value);
-
+            for (int i = 0; i <numb;i++)
+            {
+                Console.Write(ToGetFibbonachiNumValue(i)+" ");
+            }
             Console.ReadKey();
         }
         static string GetFullName(string lastName,string firstName,string patronymic)//Метод к заданию 1: Вывод объединенной строки ФИО.
@@ -96,29 +97,15 @@ namespace lesson4
 
         static int ToGetFibbonachiNumValue(int numb)//Метод к заданию 4: Нахождение числа Фиббоначчи.
         {
-            int first = 0; int second = 1;
-            int help; 
-            int result = 0;
-            if (numb == 1)
+            if(numb==0||numb==1)
             {
-                result = 0;
-            }
-            else if (numb == 2)
-            {
-                result = 1;
+                return numb;
             }
             else
             {
-                while (numb > 2)
-                {
-                    result = first + second;
-                    help = first;
-                    first = second;
-                    second = result;
-                    numb--;
-                }
+                return ToGetFibbonachiNumValue(numb - 1) + ToGetFibbonachiNumValue(numb - 2);
             }
-            return result;
+            
         }
     }
 }
